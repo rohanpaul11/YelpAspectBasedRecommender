@@ -8,9 +8,15 @@ import random
 
 CLEAR_LINE = '\033[K'
 
+# TWEAKABLE PARAMS - CHANGE THESE AS PER NEED
+MIN_REVIEWS_FOR_RESTAURANT = 1000
+MIN_WORDS_IN_REVIEW = 50
+MAX_TEST_REVIEWS = 250
+
+RANDOM_MAX = 1000
+RANDOM_THRESHOLD = 990
+
 # get all the businesses that are restaurants
-
-
 def extract_restaurants(business_file, restaurant_file):
     restaurants = []
     count = 0
@@ -31,9 +37,7 @@ def extract_restaurants(business_file, restaurant_file):
             fout.write(json.dumps(restaurant) + '\n')
 
 # extract all the reviews for the restaurant businesses
-
-
-def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file, parser):
+def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file):
     restaurant_ids = set()
     with open(restaurant_file, 'r') as fin:
         for line in fin:
@@ -90,7 +94,7 @@ def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_rev
         for restaurant, freq in restaurant_map.most_common():
             logfile.write(
                 '{} restaurant has {} reviews.\n'.format(restaurant, freq))
-            if freq >= 100:
+            if freq >= MIN_REVIEWS_FOR_RESTAURANT:
                 fout.write(restaurant + '\n')
 
     # plot length vs freq to get an idea of what percentage of the reviews
@@ -139,7 +143,7 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
                 continue
             review_text = review['text']
             num_words = len(review_text.split())
-            if num_words < 30:
+            if num_words < MIN_WORDS_IN_REVIEW:
                 continue
             # if len(review_text) < 550 or len(review_text) > 600:
             #     continue
@@ -147,8 +151,8 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
                 pos += 1
                 pos_reviews.append(review)
             else:
-                r = random.randint(1, 101)
-                if r > 75:
+                r = random.randint(0, RANDOM_MAX)
+                if r >= RANDOM_THRESHOLD and neg_test < MAX_TEST_REVIEWS:
                     neg_test += 1
                     neg_test_reviews.append(review)
                 else:
@@ -215,6 +219,7 @@ def get_statistics(dataset):
 
     parts = dataset.split('/')
     parts[-1] = 'statistics_' + parts[-1]
+    parts[-1] = parts[-1].replace('json', 'txt')
     dataset = '/'.join(part for part in parts)
     with open(dataset, 'w') as fout:
         fout.write('Length Freq Map\n')
@@ -229,11 +234,11 @@ def get_statistics(dataset):
 
 
 if __name__ == '__main__':
-    retcode = server.start_corenlp_server()
-    if retcode != 0:
-        exit(retcode)
+    # retcode = server.start_corenlp_server()
+    # if retcode != 0:
+    #     exit(retcode)
 
-    parser = CoreNLPParser(url='http://localhost:9000')
+    # parser = CoreNLPParser(url='http://localhost:9000')
 
     # change the paths here as per your system
     business_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_business.json'
@@ -248,11 +253,11 @@ if __name__ == '__main__':
 
     extract_restaurants(business_file, restaurant_file)
     extract_reviews_for_restaurants(
-        restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file, parser)
+        restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file)
     extract_positive_and_negative_reviews(
         restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
     get_statistics(filtered_dataset)
 
-    retcode = server.stop_corenlp_server()
-    if retcode != 0:
-        print('Failed to shutdown server properly!Please check and shut it down.')
+    # retcode = server.stop_corenlp_server()
+    # if retcode != 0:
+    #     print('Failed to shutdown server properly!Please check and shut it down.')
