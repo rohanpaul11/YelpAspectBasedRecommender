@@ -12,10 +12,14 @@
 
 python process.py
 
-## Index the documents using galago command (This will take a long time)
+## Index the documents using galago command (This will take a long time) (For now you can skip this step. An index for 5000 reviews is created as a sample and uploaded into github. So can check out search with GUI below)
 
 galago build --inputPath=trecText --indexPath=./index/ --fileType=trectext --nonStemmedPostings=true --stemmedPostings=true --stemmer+krovetz --corpus=true --tokenizer/fields+text
 
 ## Launch GUI search tool
 
 galago search --port=8081 --index=./index/ --scorer=dirichlet --defaultTextPart=postings.krovetz
+
+## Check out results in browser
+
+http://127.0.1.1:8081
