@@ -23,3 +23,5 @@ galago search --port=8081 --index=./index/ --scorer=dirichlet --defaultTextPart=
 ## Check out results in browser
 
 http://127.0.1.1:8081
+
+![Search demo](galago_demo.png "Yelp search demo")
