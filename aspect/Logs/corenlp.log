@@ -1,0 +1,5 @@
+Error: Could not find or load main class edu.stanford.nlp.pipeline.StanfordCoreNLPServer
+cat: /tmp/corenlp.shutdown: No such file or directory
+--2018-11-07 21:43:03--  http://localhost:9000/shutdown?key=
+Resolving localhost (localhost)... 127.0.0.1
+Connecting to localhost (localhost)|127.0.0.1|:9000... failed: Connection refused.
