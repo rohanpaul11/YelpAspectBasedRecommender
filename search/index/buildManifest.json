@@ -1,0 +1,40 @@
+{
+  "corpus" : true,
+  "corpusParameters" : {
+    "blockSize" : 512,
+    "filename" : "/home/rgangaraju/classes/nlp_585/project/gitYelp/search/./index/corpus",
+    "mergerClass" : "org.lemurproject.galago.core.index.merge.CorpusMerger",
+    "readerClass" : "org.lemurproject.galago.core.index.corpus.CorpusReader",
+    "tokenizer" : {
+      "fields" : [ "text"],
+      "formats" : {
+
+      }
+    },
+    "writerClass" : "org.lemurproject.galago.core.index.corpus.CorpusFolderWriter"
+  },
+  "fieldIndex" : true,
+  "fieldIndexParameters" : {
+    "nonStemmedPostings" : true,
+    "stemmedPostings" : true,
+    "stemmer" : [ "krovetz"]
+  },
+  "fileType" : "trectext",
+  "indexPath" : "/home/rgangaraju/classes/nlp_585/project/gitYelp/search/./index",
+  "inputPath" : [ "/home/rgangaraju/classes/nlp_585/project/gitYelp/search/trecText"],
+  "nonStemmedPostings" : true,
+  "skipDistance" : 500,
+  "skipping" : true,
+  "stemmedCounts" : false,
+  "stemmedPostings" : true,
+  "stemmer" : [ "krovetz"],
+  "stemmerClass" : {
+    "krovetz" : "org.lemurproject.galago.core.parse.stem.KrovetzStemmer"
+  },
+  "tokenizer" : {
+    "fields" : [ "text"],
+    "formats" : {
+
+    }
+  }
+}
