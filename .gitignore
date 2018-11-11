@@ -1,11 +1,6 @@
 aspect/Data/*.json
 aspect/Data/*.txt
 aspect/Code/stanford-corenlp-full-2018-10-05/
-<<<<<<< HEAD
-search/index/*
-search/trecText
-=======
+aspect/Logs/corenlp.log
 retrieval/index
 retrieval/trecText
-
->>>>>>> search

@@ -1,5 +1,5 @@
 from extract import *
-
+from aspects import *
 
 def main():
     # CHANGE THE PATHS HERE
@@ -31,6 +31,21 @@ def main():
         restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
     get_statistics(filtered_dataset)
 
+    train_file = '../Data/filtered_dataset.json'
+    dependency_file = '../Data/dependencies.txt'
+    aspect_file = '../Data/aspects.txt'
+
+    retcode = server.start_corenlp_server()
+    if retcode != 0:
+        exit(retcode)
+    
+    get_dependencies(train_file, dependency_file)
+
+    retcode = server.stop_corenlp_server()
+    if retcode != 0:
+        print('Failed to shutdown server properly!Please check and shut it down.')
+
+    get_aspects(dependency_file, aspect_file)
 
 if __name__ == '__main__':
     main()

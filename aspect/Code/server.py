@@ -4,7 +4,7 @@ import os
 import time
 
 # starts the CoreNLP server
-def start_corenlp_server():
+def start_corenlp_server(logfile_path='../Logs/corenlp.log'):
     # stop the server if it is already running
     stop_corenlp_server()
 
@@ -16,7 +16,7 @@ def start_corenlp_server():
     command = 'java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -preload tokenize,ssplit,pos,parse,depparse -status_port 9000 -port 9000 -timeout 15000 &'
 
     # store the outputs in logfile
-    with open('../Logs/corenlp.log', 'w') as logfile:
+    with open(logfile_path, 'w') as logfile:
         p = subprocess.Popen(command, cwd=exec_dir, shell=True, stdout=logfile, stderr=logfile)
         p.wait()
         expired = True
@@ -38,12 +38,12 @@ def start_corenlp_server():
         return p.returncode
 
 # stops the CoreNLP server
-def stop_corenlp_server():
+def stop_corenlp_server(logfile_path='../Logs/corenlp.log'):
     print('Stopping the corenlp server if it is running...')
     # command that initiates shutdown
     command = 'wget "localhost:9000/shutdown?key=`cat /tmp/corenlp.shutdown`" -O -'
     # append shutdown logs
-    with open('../Logs/corenlp.log', 'a+') as logfile:
+    with open(logfile_path, 'a+') as logfile:
         p = subprocess.Popen(command, shell=True, stdout=logfile, stderr=logfile)        
         p.wait()        
         return p.returncode
