@@ -1,7 +1,7 @@
 from nltk.parse.corenlp import CoreNLPDependencyParser
 from nltk.parse.corenlp import CoreNLPParser
 import json
-import server
+from server import *
 import ast
 
 CLEAR_LINE = '\033[K'
@@ -75,14 +75,14 @@ if __name__ == '__main__':
     dependency_file = '../Data/dependencies.txt'
     aspect_file = '../Data/aspects.txt'
 
-    # retcode = server.start_corenlp_server()
-    # if retcode != 0:
-    #     exit(retcode)
+    retcode = start_corenlp_server()
+    if retcode != 0:
+        exit(retcode)
     
-    # get_dependencies(review_file, dependency_file)
+    get_dependencies(review_file, dependency_file)
 
-    # retcode = server.stop_corenlp_server()
-    # if retcode != 0:
-    #     print('Failed to shutdown server properly!Please check and shut it down.')
+    retcode = stop_corenlp_server()
+    if retcode != 0:
+        print('Failed to shutdown server properly!Please check and shut it down.')
     
     get_aspects(dependency_file, aspect_file)

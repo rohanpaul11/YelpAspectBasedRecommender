@@ -9,11 +9,12 @@ import random
 CLEAR_LINE = '\033[K'
 
 # TWEAKABLE PARAMS - CHANGE THESE AS PER NEED
-MIN_REVIEWS_FOR_RESTAURANT = 1500
+MIN_REVIEWS_FOR_RESTAURANT = 800
 MIN_WORDS_IN_REVIEW = 20
 MAX_WORDS_IN_REVIEW = 300
 MAX_TEST_REVIEWS = 250
-
+MAX_REVIEWS_PER_RESTAURANT = 50
+THRESHOLD_STAR_RATING = 3
 
 # get all the businesses that are restaurants
 def extract_restaurants(business_file, restaurant_file):
@@ -117,8 +118,7 @@ def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_rev
     # plot restaurant vs freq of reviews for each
     # restaurant
     plt.clf()    
-    plt.bar(range(1, len(restaurant_map.keys()) + 1), restaurant_map.values())
-    
+    plt.bar(range(1, len(restaurant_map.keys()) + 1), restaurant_map.values())    
     plt.xlabel('restaurant')
     plt.ylabel('freq')
 
@@ -134,7 +134,7 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
     pos = 0
     neg_train = 0
     neg_test = 0
-    threshold_rating = 3
+    THRESHOLD_STAR_RATING = 3
 
     pos_reviews = []
     neg_train_reviews = []
@@ -149,18 +149,21 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
         for line in fin:
             restaurant_ids.add(line.strip())
 
+    restaurant_map = defaultdict(int)
     with open(restaurant_review_file, 'r') as fin, open(positive_file, 'w') as fposout, open(negative_train_file, 'w') as fnegtrainout, open(negative_test_file, 'w') as fnegtestout, open(filtered_dataset, 'w') as fout:
         test = False
         for line in fin:
             review = json.loads(line)
-            if review['business_id'] not in restaurant_ids:
+            restaurant_id = review['business_id']
+            if restaurant_id not in restaurant_ids or restaurant_map[restaurant_id] >= MAX_REVIEWS_PER_RESTAURANT:
                 continue
             review_text = review['text']
             num_words = len(review_text.split())
             if num_words < MIN_WORDS_IN_REVIEW or num_words > MAX_WORDS_IN_REVIEW:
                 continue
             
-            if review['stars'] > threshold_rating:
+            restaurant_map[restaurant_id] += 1
+            if review['stars'] > THRESHOLD_STAR_RATING:
                 pos += 1
                 pos_reviews.append(review)
             else:
@@ -212,20 +215,26 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
     print(neg_test, 'negative test restaurant reviews')
     print('total number of filtered reviews(train) = {}'.format(str(pos + neg_train)))
 
+    
 # get statistics like length frequency, restaurant frequency and user frequency
-
-
 def get_statistics(dataset):
     length_map = defaultdict(int)
     restaurant_map = defaultdict(int)
     user_map = defaultdict(int)
 
     with open(dataset, 'r') as fin:
+        pos = 0
+        neg = 0
         for line in fin:
             review = json.loads(line)
             review_text = review['text']
             user_id = review['user_id']
             restaurant_id = review['business_id']
+            stars = review['stars']
+            if stars > THRESHOLD_STAR_RATING:
+                pos += 1
+            else:
+                neg += 1
             review_len = len(review_text)
             length_map[review_len] += 1
             restaurant_map[restaurant_id] += 1
@@ -239,25 +248,21 @@ def get_statistics(dataset):
         fout.write('{} different lengths.\n'.format(len(length_map.keys())))
         fout.write('{} different restaurants.\n'.format(len(restaurant_map.keys())))
         fout.write('{} different users.\n'.format(len(user_map.keys())))
-
-        fout.write('Length Freq Map\n')
-        for length, freq in length_map.items():
-            fout.write('{}\t:{}\n'.format(length, freq))
-        fout.write('Restaurant Freq Map\n')
+        fout.write('\n{} positive train reviews.\n'.format(pos))
+        fout.write('{} negative train reviews.\n'.format(neg))
+        fout.write('{} negative test reviews.\n'.format(MAX_TEST_REVIEWS))
+        # fout.write('Length Freq Map\n')
+        # for length, freq in length_map.items():
+        #     fout.write('{}\t:{}\n'.format(length, freq))
+        fout.write('\nRestaurant Freq Map\n')
         for restaurant, freq in restaurant_map.items():
             fout.write('{}\t:{}\n'.format(restaurant, freq))
-        fout.write('User Freq Map\n')
-        for user, freq in user_map.items():
-            fout.write('{}\t:{}\n'.format(user, freq))
+        # fout.write('User Freq Map\n')
+        # for user, freq in user_map.items():
+        #     fout.write('{}\t:{}\n'.format(user, freq))
 
 
 if __name__ == '__main__':
-    # retcode = server.start_corenlp_server()
-    # if retcode != 0:
-    #     exit(retcode)
-
-    # parser = CoreNLPParser(url='http://localhost:9000')
-
     # change the paths here as per your system
     business_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_business.json'
     restaurant_file = '../Data/restaurants.json'
@@ -269,13 +274,11 @@ if __name__ == '__main__':
     filtered_restaurant_file = '../Data/filtered_restaurants.txt'
     filtered_dataset = '../Data/filtered_dataset.json'
 
-    # extract_restaurants(business_file, restaurant_file)
+    extract_restaurants(business_file, restaurant_file)
     extract_reviews_for_restaurants(
         restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file)
-    # extract_positive_and_negative_reviews(
-    #     restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
-    # get_statistics(filtered_dataset)
+    extract_positive_and_negative_reviews(
+        restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
+    get_statistics(filtered_dataset)
 
-    # retcode = server.stop_corenlp_server()
-    # if retcode != 0:
-    #     print('Failed to shutdown server properly!Please check and shut it down.')
+    
