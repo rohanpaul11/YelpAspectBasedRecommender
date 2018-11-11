@@ -9,8 +9,9 @@ import random
 CLEAR_LINE = '\033[K'
 
 # TWEAKABLE PARAMS - CHANGE THESE AS PER NEED
-MIN_REVIEWS_FOR_RESTAURANT = 1000
-MIN_WORDS_IN_REVIEW = 50
+MIN_REVIEWS_FOR_RESTAURANT = 1500
+MIN_WORDS_IN_REVIEW = 20
+MAX_WORDS_IN_REVIEW = 300
 MAX_TEST_REVIEWS = 250
 
 RANDOM_MAX = 1000
@@ -25,6 +26,9 @@ def extract_restaurants(business_file, restaurant_file):
             business = json.loads(line)
             categories = business['categories']
             if categories is None:
+                continue
+            # Filter restaurants based on location
+            if not business['city'].lower() == "las vegas":
                 continue
             # if restaurant is one of the business categories
             if 'restaurant'.casefold() in categories.casefold():
@@ -143,7 +147,7 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
                 continue
             review_text = review['text']
             num_words = len(review_text.split())
-            if num_words < MIN_WORDS_IN_REVIEW:
+            if num_words < MIN_WORDS_IN_REVIEW or num_words > MAX_WORDS_IN_REVIEW:
                 continue
             # if len(review_text) < 550 or len(review_text) > 600:
             #     continue
