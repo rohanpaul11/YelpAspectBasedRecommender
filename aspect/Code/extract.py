@@ -9,15 +9,20 @@ import random
 CLEAR_LINE = '\033[K'
 
 # TWEAKABLE PARAMS - CHANGE THESE AS PER NEED
-MIN_REVIEWS_FOR_RESTAURANT = 1000
+MIN_REVIEWS_FOR_RESTAURANT = 6000
 MIN_WORDS_IN_REVIEW = 50
 MAX_TEST_REVIEWS = 250
 
-RANDOM_MAX = 1000
-RANDOM_THRESHOLD = 990
 
 # get all the businesses that are restaurants
 def extract_restaurants(business_file, restaurant_file):
+    stop_file = '../Data/stop_list.txt'
+
+    stop_list = []
+    with open(stop_file, 'r') as fin:
+        for line in fin:
+            stop_list.append(line.strip().lower())
+    
     restaurants = []
     count = 0
     with open(business_file, 'r') as fin:
@@ -25,11 +30,18 @@ def extract_restaurants(business_file, restaurant_file):
             business = json.loads(line)
             categories = business['categories']
             if categories is None:
-                continue
+                continue            
             # if restaurant is one of the business categories
             if 'restaurant'.casefold() in categories.casefold():
-                count += 1
-                restaurants.append(business)
+                categories = categories.strip().lower() 
+                ok = True
+                for stop_cat in stop_list:
+                    if stop_cat in categories:
+                        ok = False
+                        break
+                if ok:
+                    count += 1
+                    restaurants.append(business)
 
     print(count, 'restaurants are present.')
     with open(restaurant_file, 'w') as fout:
@@ -98,16 +110,22 @@ def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_rev
                 fout.write(restaurant + '\n')
 
     # plot length vs freq to get an idea of what percentage of the reviews
-    # has what length
+    # has what length; also plot restaurant vs freq of reviews for each
+    # restaurant
     plt.clf()
-    plt.subplot(2, 1, 1)
-    plt.bar(length_map.keys(), length_map.values())
-    plt.xlabel('length')
-    plt.ylabel('freq')
-    plt.subplot(2, 1, 2)
-    plt.bar(range(1, len(restaurant_map.keys())+1), restaurant_map.values())
-    plt.xlabel('restaurant')
-    plt.ylabel('freq')
+    fig, ax = plt.subplots(2, 1, sharex = False, sharey = False)
+    # len_indices = range(1, len(length_map.keys())+1)
+    ax[0].plot(length_map.keys(), length_map.values())
+    # ax[0].set_xticks(len_indices)
+    # ax[0].set_xticklabels(length_map.keys())
+    ax[0].set_xlabel('length')
+    ax[0].set_ylabel('freq')
+    # rest_indices = range(1, len(restaurant_map.keys())+1)
+    ax[1].plot(restaurant_map.keys(), restaurant_map.values())
+    # ax[1].set_xticks(rest_indices)
+    # ax[1].set_xticklabels(restaurant_map.keys())
+    ax[1].set_xlabel('restaurant')
+    ax[1].set_ylabel('freq')
 
     plt.tight_layout()
     plt.savefig('../Logs/freq.jpeg')
@@ -137,6 +155,7 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
             restaurant_ids.add(line.strip())
 
     with open(restaurant_review_file, 'r') as fin, open(positive_file, 'w') as fposout, open(negative_train_file, 'w') as fnegtrainout, open(negative_test_file, 'w') as fnegtestout, open(filtered_dataset, 'w') as fout:
+        test = False
         for line in fin:
             review = json.loads(line)
             if review['business_id'] not in restaurant_ids:
@@ -145,19 +164,19 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
             num_words = len(review_text.split())
             if num_words < MIN_WORDS_IN_REVIEW:
                 continue
-            # if len(review_text) < 550 or len(review_text) > 600:
-            #     continue
+            
             if review['stars'] > threshold_rating:
                 pos += 1
                 pos_reviews.append(review)
             else:
-                r = random.randint(0, RANDOM_MAX)
-                if r >= RANDOM_THRESHOLD and neg_test < MAX_TEST_REVIEWS:
+                if test and neg_test < MAX_TEST_REVIEWS:
                     neg_test += 1
                     neg_test_reviews.append(review)
+                    test = False
                 else:
                     neg_train += 1
                     neg_train_reviews.append(review)
+                    test = True
             batch_sz += 1
             if batch_sz == max_batch_sz:
                 print('Writing batch {} to file, {} positive reviews, {} negative train reviews, {} negative test reviews.'.format(
@@ -222,6 +241,10 @@ def get_statistics(dataset):
     parts[-1] = parts[-1].replace('json', 'txt')
     dataset = '/'.join(part for part in parts)
     with open(dataset, 'w') as fout:
+        fout.write('{} different lengths.\n'.format(len(length_map.keys())))
+        fout.write('{} different restaurants.\n'.format(len(restaurant_map.keys())))
+        fout.write('{} different users.\n'.format(len(user_map.keys())))
+
         fout.write('Length Freq Map\n')
         for length, freq in length_map.items():
             fout.write('{}\t:{}\n'.format(length, freq))
@@ -251,12 +274,12 @@ if __name__ == '__main__':
     filtered_restaurant_file = '../Data/filtered_restaurants.txt'
     filtered_dataset = '../Data/filtered_dataset.json'
 
-    extract_restaurants(business_file, restaurant_file)
+    # extract_restaurants(business_file, restaurant_file)
     extract_reviews_for_restaurants(
         restaurant_file, review_file, restaurant_review_file, filtered_restaurant_file)
-    extract_positive_and_negative_reviews(
-        restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
-    get_statistics(filtered_dataset)
+    # extract_positive_and_negative_reviews(
+    #     restaurant_review_file, filtered_restaurant_file, filtered_dataset, positive_review_file, negative_train_review_file, negative_test_review_file)
+    # get_statistics(filtered_dataset)
 
     # retcode = server.stop_corenlp_server()
     # if retcode != 0:

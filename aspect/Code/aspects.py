@@ -2,6 +2,7 @@ from nltk.parse.corenlp import CoreNLPDependencyParser
 from nltk.parse.corenlp import CoreNLPParser
 import json
 import server
+import ast
 
 CLEAR_LINE = '\033[K'
 
@@ -28,44 +29,60 @@ def get_dependencies(review_file, dependency_file):
             review = json.loads(line)
             review_text = review['text']
                         
-            print('Parsing review', str(count + 1),'....',end='\r')
-            fout.write('Review {}:'.format(review['review_id']))
+            print('Parsing review', str(count + 1),'....',end='\r')            
 
-            sentences = get_sentences(review_text, parser)  
-            review_dependencies = []
-            for sentence in sentences:
-                # print(sentence)            
-                parses = dep_parser.parse(list(parser.tokenize(sentence.lower())))
-                dependencies = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in parses]
+            try:
+                sentences = get_sentences(review_text, parser)   
+                review_dependencies = []
+                for sentence in sentences:
+                    # print(sentence)            
+                    parses = dep_parser.parse(list(parser.tokenize(sentence.lower())))
+                    dependencies = [[(governor, dep, dependent) for governor, dep, dependent in parse.triples()] for parse in parses]
 
-                review_dependencies.append(dependencies)
-            
-            fout.write(str(review_dependencies) + '\n')
-            count += 1    
+                    review_dependencies.append(dependencies)
+                
+                fout.write('Review {}:'.format(review['review_id']))
+                fout.write(str(review_dependencies) + '\n')
+                count += 1    
+            except Exception as e:
+                stop_corenlp_server()
+                start_corenlp_server()
+                parser = CoreNLPParser(url='http://localhost:9000')
+                dep_parser = CoreNLPDependencyParser(url='http://localhost:9000')
+                fout.write('Review {}:FAILED - {}'.format(review['review_id'], str(e)))
 
 # incomplete
 def get_aspects(dependency_file, aspect_file):
+    count = 0
     with open(dependency_file, 'r') as fin, open(aspect_file, 'w') as fout:                
         for line in fin:
-            index = line.find(':'):
-            review_dependencies = list(line[index + 1:])
+            print('Review {}'.format(str(count+1)), end='\r')
+            index = line.find(':')
+            review_id = line[:index+1]
+            review_dependencies = ast.literal_eval(line[index + 1:])
             aspects = []
             for sentence_dependencies in review_dependencies:
-                for dependency in sentence_dependencies:
-                    if dependency[1] == 'nobj' and dependency[0][1].startswith('JJ') and dependency[2][1].startswith('NN'):
+                # print(type(sentence_dependencies))                                
+                for dependency in sentence_dependencies[0]:
+                    # print(dependency)
+                    if dependency[1] == 'nsubj' and dependency[0][1].startswith('JJ') and dependency[2][1].startswith('NN'):
                         aspects.append(dependency)
-            fout.write(str(aspects) + '\n')
+            fout.write(review_id + str(aspects) + '\n')
+            count += 1
 
 if __name__ == '__main__':
     review_file = '../Data/filtered_dataset.json'
     dependency_file = '../Data/dependencies.txt'
+    aspect_file = '../Data/aspects.txt'
 
-    retcode = server.start_corenlp_server()
-    if retcode != 0:
-        exit(retcode)
+    # retcode = server.start_corenlp_server()
+    # if retcode != 0:
+    #     exit(retcode)
     
-    get_dependencies(review_file, dependency_file)
+    # get_dependencies(review_file, dependency_file)
 
-    retcode = server.stop_corenlp_server()
-    if retcode != 0:
-        print('Failed to shutdown server properly!Please check and shut it down.')
+    # retcode = server.stop_corenlp_server()
+    # if retcode != 0:
+    #     print('Failed to shutdown server properly!Please check and shut it down.')
+    
+    get_aspects(dependency_file, aspect_file)
