@@ -9,8 +9,9 @@ import random
 CLEAR_LINE = '\033[K'
 
 # TWEAKABLE PARAMS - CHANGE THESE AS PER NEED
-MIN_REVIEWS_FOR_RESTAURANT = 6000
-MIN_WORDS_IN_REVIEW = 50
+MIN_REVIEWS_FOR_RESTAURANT = 1500
+MIN_WORDS_IN_REVIEW = 20
+MAX_WORDS_IN_REVIEW = 300
 MAX_TEST_REVIEWS = 250
 
 
@@ -31,6 +32,9 @@ def extract_restaurants(business_file, restaurant_file):
             categories = business['categories']
             if categories is None:
                 continue            
+            # Filter restaurants based on location
+            if not business['city'].lower() == "las vegas":
+                continue
             # if restaurant is one of the business categories
             if 'restaurant'.casefold() in categories.casefold():
                 categories = categories.strip().lower() 
@@ -99,33 +103,24 @@ def extract_reviews_for_restaurants(restaurant_file, review_file, restaurant_rev
     print(num_reviews, 'restaurant reviews')
 
     with open('../Logs/freq.log', 'w') as logfile, open(filtered_restaurant_file, 'w') as fout:
-        logfile.write('length freq map\n')
-        for length, freq in length_map.items():
-            logfile.write(
-                '{} length reviews occur {} times.\n'.format(length, freq))
+        # logfile.write('length freq map\n')
+        # for length, freq in length_map.items():
+        #     logfile.write(
+        #         '{} length reviews occur {} times.\n'.format(length, freq))
+        # logfile.write('==================================================================')
+        logfile.write('restaurant freq map\n')
         for restaurant, freq in restaurant_map.most_common():
-            logfile.write(
-                '{} restaurant has {} reviews.\n'.format(restaurant, freq))
+            logfile.write('{} restaurant: {} reviews.\n'.format(restaurant, freq))
             if freq >= MIN_REVIEWS_FOR_RESTAURANT:
                 fout.write(restaurant + '\n')
 
-    # plot length vs freq to get an idea of what percentage of the reviews
-    # has what length; also plot restaurant vs freq of reviews for each
+    # plot restaurant vs freq of reviews for each
     # restaurant
-    plt.clf()
-    fig, ax = plt.subplots(2, 1, sharex = False, sharey = False)
-    # len_indices = range(1, len(length_map.keys())+1)
-    ax[0].plot(length_map.keys(), length_map.values())
-    # ax[0].set_xticks(len_indices)
-    # ax[0].set_xticklabels(length_map.keys())
-    ax[0].set_xlabel('length')
-    ax[0].set_ylabel('freq')
-    # rest_indices = range(1, len(restaurant_map.keys())+1)
-    ax[1].plot(restaurant_map.keys(), restaurant_map.values())
-    # ax[1].set_xticks(rest_indices)
-    # ax[1].set_xticklabels(restaurant_map.keys())
-    ax[1].set_xlabel('restaurant')
-    ax[1].set_ylabel('freq')
+    plt.clf()    
+    plt.bar(range(1, len(restaurant_map.keys()) + 1), restaurant_map.values())
+    
+    plt.xlabel('restaurant')
+    plt.ylabel('freq')
 
     plt.tight_layout()
     plt.savefig('../Logs/freq.jpeg')
@@ -162,7 +157,7 @@ def extract_positive_and_negative_reviews(restaurant_review_file, filtered_resta
                 continue
             review_text = review['text']
             num_words = len(review_text.split())
-            if num_words < MIN_WORDS_IN_REVIEW:
+            if num_words < MIN_WORDS_IN_REVIEW or num_words > MAX_WORDS_IN_REVIEW:
                 continue
             
             if review['stars'] > threshold_rating:

@@ -2,3 +2,5 @@ aspect/Data/*.json
 aspect/Data/*.txt
 aspect/Code/stanford-corenlp-full-2018-10-05/
 aspect/Logs/corenlp.log
+retrieval/index
+retrieval/trecText
