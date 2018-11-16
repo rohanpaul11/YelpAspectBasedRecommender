@@ -71,18 +71,36 @@ def get_aspects(dependency_file, aspect_file):
             count += 1
 
 if __name__ == '__main__':
-    review_file = '../Data/filtered_dataset.json'
-    dependency_file = '../Data/dependencies.txt'
-    aspect_file = '../Data/aspects.txt'
+    # review_file = '../Data/filtered_dataset.json'
+    # dependency_file = '../Data/dependencies.txt'
+    # aspect_file = '../Data/aspects.txt'
+
+
+    # retcode = start_corenlp_server()
+    # if retcode != 0:
+    #     exit(retcode)
+    
+    # get_dependencies(review_file, dependency_file)
+
+    # retcode = stop_corenlp_server()
+    # if retcode != 0:
+    #     print('Failed to shutdown server properly!Please check and shut it down.')
+    
+    # get_aspects(dependency_file, aspect_file)
+
+    test_review_file = '../Data/negative_test_reviews.json'
+    test_dependency_file = '../Data/test_dependencies.txt'
+    test_aspect_file = '../Data/test_aspects.txt'
+
 
     retcode = start_corenlp_server()
     if retcode != 0:
         exit(retcode)
     
-    get_dependencies(review_file, dependency_file)
+    get_dependencies(test_review_file, test_dependency_file)
 
     retcode = stop_corenlp_server()
     if retcode != 0:
         print('Failed to shutdown server properly!Please check and shut it down.')
     
-    get_aspects(dependency_file, aspect_file)
+    get_aspects(test_dependency_file, test_aspect_file)

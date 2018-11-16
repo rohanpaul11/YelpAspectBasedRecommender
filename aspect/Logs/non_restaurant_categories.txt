@@ -1,0 +1,672 @@
+671 categories for non-restaurants restaurants.
+restaurants	9779
+nightlife	4069
+bars	3862
+food	3119
+event planning & services	2247
+american (traditional)	2133
+sports bars	1665
+caterers	1556
+pubs	1382
+american (new)	1164
+sandwiches	918
+chicken wings	825
+arts & entertainment	816
+specialty food	813
+breakfast & brunch	806
+burgers	748
+pizza	687
+fast food	655
+caribbean	604
+cafes	572
+gastropubs	513
+chicken shop	513
+mexican	498
+grocery	475
+italian	470
+venues & event spaces	468
+delis	463
+shopping	460
+indian	448
+canadian (new)	447
+salad	406
+seafood	406
+beer	401
+wine & spirits	401
+pakistani	397
+barbeque	378
+coffee & tea	373
+music venues	342
+hotels & travel	308
+food stands	298
+bakeries	295
+desserts	284
+food trucks	273
+lounges	272
+cocktail bars	270
+comfort food	267
+steakhouses	259
+dive bars	235
+active life	217
+hotels	209
+vegetarian	198
+street vendors	196
+wine bars	194
+mediterranean	183
+spanish	181
+asian fusion	175
+breweries	164
+meat shops	162
+irish	160
+gluten-free	160
+beer bar	159
+dance clubs	158
+chinese	155
+middle eastern	152
+halal	147
+vegan	143
+juice bars & smoothies	142
+tapas bars	138
+food delivery services	138
+ethnic food	138
+party & event planning	137
+poke	136
+latin american	133
+tapas/small plates	132
+health markets	129
+sushi bars	126
+french	126
+convenience stores	118
+japanese	116
+southern	112
+casinos	110
+diners	107
+hawaiian	104
+karaoke	98
+british	94
+irish pub	82
+soup	80
+hot dogs	80
+arcades	78
+ice cream & frozen yogurt	77
+home & garden	77
+buffets	75
+seafood markets	74
+golf	72
+patisserie/cake shop	71
+automotive	70
+beauty & spas	70
+korean	70
+local flavor	66
+imported food	66
+pasta shops	65
+jazz & blues	64
+farmers market	63
+local services	62
+greek	61
+tex-mex	59
+bed & breakfast	59
+organic stores	59
+pool halls	59
+tacos	59
+soul food	57
+shopping centers	56
+cheese shops	56
+chocolatiers & shops	55
+flowers & gifts	54
+cajun/creole	54
+international grocery	53
+german	50
+home services	50
+brasseries	49
+health & medical	48
+professional services	48
+education	47
+fashion	46
+beer gardens	46
+thai	45
+butcher	45
+portuguese	45
+food court	41
+gas stations	41
+fish & chips	40
+performing arts	40
+wraps	39
+festivals	37
+delicatessen	37
+african	37
+wineries	36
+bowling	35
+brewpubs	34
+fruits & veggies	34
+art galleries	34
+modern european	32
+whiskey bars	32
+kitchen & bath	32
+vietnamese	31
+filipino	31
+arts & crafts	30
+personal chefs	29
+bistros	29
+wedding planning	27
+books	27
+mags	27
+music & video	27
+specialty schools	27
+gift shops	26
+social clubs	26
+day spas	25
+public services & government	25
+adult entertainment	25
+puerto rican	25
+live/raw food	24
+hair salons	24
+bagels	24
+internet cafes	24
+resorts	23
+wholesalers	23
+appliances	23
+creperies	22
+kosher	22
+cinema	22
+hookah bars	22
+candy stores	22
+restaurant supplies	22
+fitness & instruction	21
+basque	21
+tours	20
+kids activities	20
+pets	19
+florists	19
+furniture stores	19
+cuban	18
+shaved ice	18
+drugstores	18
+department stores	18
+afghan	18
+persian/iranian	18
+poutineries	17
+dominican	17
+do-it-yourself food	17
+real estate	17
+cooking schools	17
+smokehouse	17
+home decor	16
+ethnic grocery	16
+wigs	16
+peruvian	16
+noodles	16
+macarons	15
+custom cakes	15
+playgrounds	14
+brazilian	14
+waffles	14
+dinner theater	14
+comedy clubs	14
+wholesale stores	14
+country clubs	13
+amusement parks	13
+nutritionists	13
+cooking classes	13
+tobacco shops	13
+bookstores	13
+cupcakes	13
+russian	13
+women's clothing	13
+lebanese	13
+haitian	13
+swimming pools	12
+community service/non-profit	12
+belgian	12
+eatertainment	12
+coffee roasteries	12
+cosmetics & beauty supply	12
+gelato	12
+sporting goods	12
+tea rooms	12
+appliances & repair	12
+acai bowls	12
+art classes	11
+recreation centers	11
+nail salons	11
+ethical grocery	11
+beverage store	11
+sports clubs	11
+country dance halls	10
+hobby shops	10
+international	10
+museums	10
+landmarks & historical buildings	10
+taiwanese	10
+pharmacy	10
+colombian	10
+donuts	10
+contractors	10
+public markets	10
+polish	10
+pet services	9
+salvadoran	9
+vitamins & supplements	9
+falafel	9
+cheesesteaks	9
+auto repair	9
+tabletop games	9
+outlet stores	9
+ethiopian	9
+supper clubs	8
+parks	8
+libraries	8
+bubble tea	8
+cafeteria	8
+massage	8
+beer garden	8
+coffee & tea supplies	8
+musicians	8
+airports	8
+outdoor furniture stores	8
+gay bars	8
+dim sum	8
+pretzels	8
+bangladeshi	8
+financial services	8
+new mexican cuisine	8
+toy stores	7
+herbs & spices	7
+ukrainian	7
+sri lankan	7
+religious organizations	7
+men's clothing	7
+ramen	7
+hair removal	7
+grilling equipment	7
+venezuelan	7
+arabian	7
+art schools	7
+djs	7
+laser tag	7
+piano bars	7
+wine tasting room	7
+dry cleaning & laundry	6
+pet stores	6
+nurseries & gardening	6
+moroccan	6
+bavarian	6
+food tours	6
+south african	6
+popcorn shops	6
+colleges & universities	6
+doctors	6
+transportation	6
+pet sitting	6
+kebab	6
+shared office spaces	6
+gyms	6
+mini golf	6
+fondue	6
+yelp events	6
+weight loss centers	6
+travel services	5
+laundry services	5
+cantonese	5
+towing	5
+barbers	5
+massage therapy	5
+szechuan	5
+paint & sip	5
+party supplies	5
+eyelash service	5
+laotian	5
+bartenders	5
+trinidadian	5
+donairs	5
+vinyl records	5
+trainers	5
+hakka	5
+heating & air conditioning/hvac	5
+mattresses	5
+leisure centers	5
+indoor playcentre	5
+antiques	5
+speakeasies	5
+yoga	5
+personal shopping	5
+himalayan/nepalese	5
+car wash	4
+tennis	4
+amateur sports teams	4
+shoe stores	4
+discount store	4
+souvenir shops	4
+golf lessons	4
+stadiums & arenas	4
+bike rentals	4
+bike repair/maintenance	4
+strip clubs	4
+pop-up restaurants	4
+sports wear	4
+building supplies	4
+hair stylists	4
+skin care	4
+waxing	4
+scottish	4
+car dealers	4
+airport lounges	4
+cabaret	4
+armenian	4
+interior design	4
+pub food	4
+turkish	4
+real estate services	4
+accessories	4
+plumbing	4
+videos & video game rental	4
+beaches	3
+jewelry	3
+zoos	3
+boating	3
+rv parks	3
+hot pot	3
+landscaping	3
+life coach	3
+medical spas	3
+team building activities	3
+coffeeshops	3
+pool & billiards	3
+guest houses	3
+horseback riding	3
+bikes	3
+cambodian	3
+community centers	3
+couriers & delivery services	3
+party equipment rentals	3
+marketing	3
+screen printing	3
+web design	3
+izakaya	3
+tanning	3
+escape games	3
+shaved snow	3
+marinas	3
+electronics	3
+makeup artists	3
+animal shelters	3
+scandinavian	3
+australian	3
+tasting classes	3
+walking tours	3
+themed cafes	3
+sugar shacks	3
+vape shops	3
+hospitals	3
+churches	3
+home cleaning	3
+fireplace services	3
+printing services	3
+masonry/concrete	3
+tires	3
+tuscan	3
+bankruptcy law	3
+lawyers	3
+special education	3
+nail technicians	3
+business consulting	3
+used	3
+vintage & consignment	3
+flea markets	3
+auto glass services	3
+pan asian	3
+soccer	3
+limos	3
+hiking	2
+laundromat	2
+local fish stores	2
+meditation centers	2
+cultural center	2
+botanical gardens	2
+head shops	2
+lakes	2
+hong kong style cafe	2
+distilleries	2
+race tracks	2
+hair extensions	2
+ski resorts	2
+boat charters	2
+music & dvds	2
+cideries	2
+advertising	2
+graphic design	2
+ticket sales	2
+laser hair removal	2
+argentine	2
+cosmetic surgeons	2
+spray tanning	2
+pop-up shops	2
+airport shuttles	2
+lighting fixtures & equipment	2
+furniture rental	2
+photo booth rentals	2
+pet groomers	2
+vacation rentals	2
+olive oil	2
+cards & stationery	2
+cheese tasting classes	2
+air duct cleaning	2
+auto parts & supplies	2
+pet adoption	2
+indonesian	2
+water stores	2
+singaporean	2
+farms	2
+bar crawl	2
+tax services	2
+magicians	2
+hungarian	2
+banks & credit unions	2
+home health care	2
+dentists	2
+pool & hot tub service	2
+supernatural readings	2
+horse racing	2
+nicaraguan	2
+windows installation	2
+roofing	2
+hotel bar	2
+bridal	2
+personal assistants	2
+flooring	2
+adult education	2
+it services & computer repair	2
+auto customization	2
+furniture reupholstery	2
+rock climbing	2
+golf equipment shops	2
+property management	2
+investing	2
+bingo halls	2
+empanadas	2
+climbing	2
+oil change stations	2
+computers	2
+reunion	2
+real estate agents	2
+body shops	2
+wine tours	2
+tattoo	2
+piercing	2
+wedding chapels	2
+post offices	2
+art supplies	2
+martial arts	2
+party bus rentals	2
+apartments	2
+transmission repair	2
+skating rinks	1
+visitor centers	1
+aquariums	1
+aquarium services	1
+alternative medicine	1
+leather goods	1
+landscape architects	1
+health retreats	1
+comic books	1
+slovakian	1
+syrian	1
+university housing	1
+mosques	1
+malaysian	1
+screen printing/t-shirt printing	1
+counseling & mental health	1
+teppanyaki	1
+trophy shops	1
+engraving	1
+guamanian	1
+sugaring	1
+taxis	1
+pensions	1
+rest stops	1
+boat dealers	1
+boat repair	1
+ice delivery	1
+audio/visual equipment rental	1
+fur clothing	1
+pilates	1
+furniture repair	1
+opera & ballet	1
+eyebrow services	1
+honey	1
+photographers	1
+event photography	1
+session photography	1
+fire protection services	1
+office cleaning	1
+summer camps	1
+christmas trees	1
+pumpkin patches	1
+pick your own farms	1
+skydiving	1
+accountants	1
+currency exchange	1
+check cashing/pay-day loans	1
+water heater installation/repair	1
+septic services	1
+mailbox centers	1
+clowns	1
+wine tasting classes	1
+reflexology	1
+occupational therapy	1
+acupuncture	1
+physical therapy	1
+rehabilitation center	1
+newspapers & magazines	1
+veterinarians	1
+day camps	1
+teeth whitening	1
+general dentistry	1
+cosmetic dentists	1
+medical transportation	1
+orthodontists	1
+hot tub & pool	1
+psychics	1
+game meat	1
+siding	1
+parking	1
+personal injury law	1
+immigration law	1
+divorce & family law	1
+dance studios	1
+art museums	1
+home inspectors	1
+damage restoration	1
+sailing	1
+electricians	1
+mobile phone repair	1
+auto detailing	1
+motorcycle repair	1
+auto upholstery	1
+rv repair	1
+metal fabricators	1
+airport terminals	1
+trampoline parks	1
+signmaking	1
+vehicle wraps	1
+car window tinting	1
+rotisserie chicken	1
+used bookstore	1
+mortgage brokers	1
+palatine	1
+golf equipment	1
+honduran	1
+estate liquidation	1
+traditional norwegian	1
+paint-your-own pottery	1
+security systems	1
+czech	1
+csa	1
+mass media	1
+print media	1
+dance schools	1
+preschools	1
+baby gear & furniture	1
+bartending schools	1
+feng shui	1
+hardware stores	1
+beer hall	1
+family practice	1
+public transportation	1
+car share services	1
+foundation repair	1
+dog walkers	1
+pet boarding	1
+bus tours	1
+customized merchandise	1
+cannabis clinics	1
+kids hair salons	1
+video game stores	1
+thrift stores	1
+fishmonger	1
+fishing	1
+truck rental	1
+commercial truck repair	1
+clothing rental	1
+soba	1
+tiki bars	1
+campgrounds	1
+hostels	1
+brazilian jiu-jitsu	1
+gardeners	1
+glass & mirrors	1
+software development	1
+door sales/installation	1
+go karts	1
+parenting classes	1
+keys & locksmiths	1
+airsoft	1
+aircraft repairs	1
+virtual reality centers	1
+champagne bars	1
+club crawl	1
+island pub	1
+pawn shops	1
+observatories	1
+unofficial yelp events	1
+mobile phones	1
+gun/rifle ranges	1
+historical tours	1
+medical centers	1
+knife sharpening	1
+cardiologists	1
+pediatricians	1
+emergency medicine	1
+tai chi	1
+estate planning law	1
+tax law	1
+wills	1
+trusts	1
+& probates	1
+chiropractors	1
+insurance	1
+windshield installation & repair	1
+auto insurance	1
+dry cleaning	1
+security services	1
+car rental	1

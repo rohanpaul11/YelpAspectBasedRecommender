@@ -1,0 +1,701 @@
+700 cities with restaurants.
+toronto	6293
+las vegas	5094
+phoenix	3223
+montréal	3011
+calgary	2284
+charlotte	2004
+pittsburgh	1916
+scottsdale	1192
+mississauga	1163
+cleveland	1115
+mesa	1003
+madison	848
+tempe	797
+markham	731
+chandler	705
+henderson	696
+glendale	596
+scarborough	473
+gilbert	455
+richmond hill	432
+brampton	405
+vaughan	405
+north york	369
+champaign	336
+peoria	297
+north las vegas	287
+oakville	286
+concord	283
+etobicoke	266
+laval	244
+surprise	194
+matthews	167
+gastonia	166
+avondale	161
+whitby	156
+newmarket	155
+goodyear	149
+fort mill	140
+thornhill	139
+mentor	138
+aurora	137
+pickering	130
+montreal	128
+ajax	125
+lakewood	125
+huntersville	122
+cuyahoga falls	112
+brossard	105
+urbana	104
+monroeville	103
+kent	100
+westlake	100
+monroe	97
+middleton	92
+north olmsted	92
+medina	90
+strongsville	89
+parma	82
+verdun	82
+woodbridge	80
+willoughby	78
+cornelius	78
+elyria	77
+airdrie	76
+kannapolis	75
+fountain hills	73
+cave creek	71
+stow	70
+saint-laurent	68
+dollard-des-ormeaux	67
+indian trail	66
+sun prairie	65
+canonsburg	60
+brunswick	59
+solon	59
+coraopolis	58
+rocky river	57
+cleveland heights	57
+buckeye	55
+longueuil	53
+pineville	53
+bridgeville	53
+wexford	52
+beachwood	52
+hudson	51
+stade	49
+fitchburg	47
+east york	47
+chagrin falls	47
+avon	46
+irwin	45
+boulder city	45
+waxhaw	44
+lorain	44
+avon lake	44
+sun city	43
+pointe-claire	43
+euclid	42
+painesville	42
+bethel park	42
+lasalle	41
+belmont	40
+york	40
+harrisburg	40
+monona	39
+verona	39
+independence	39
+litchfield park	39
+saint-sauveur	39
+north royalton	38
+streetsboro	37
+dorval	37
+mayfield heights	37
+fairlawn	37
+broadview heights	36
+amherst	36
+twinsburg	35
+northfield	35
+vaudreuil-dorion	35
+westmount	34
+stoughton	34
+west mifflin	33
+middleburg heights	33
+sewickley	32
+gibsonia	32
+macedonia	32
+new kensington	32
+lachine	32
+carnegie	32
+brooklyn	30
+murrysville	29
+tolleson	29
+georgetown	29
+pierrefonds	29
+laveen	29
+davidson	28
+chardon	28
+allison park	27
+bedford	27
+rantoul	27
+outremont	26
+mckeesport	26
+homestead	26
+brecksville	25
+whitchurch-stouffville	25
+berea	25
+bolton	25
+north ridgeville	25
+lyndhurst	25
+carefree	24
+mint hill	24
+tallmadge	23
+mckees rocks	23
+oregon	22
+fairview park	22
+south euclid	22
+el mirage	22
+willowick	22
+stouffville	22
+trafford	21
+kirkland	21
+brook park	21
+mahomet	21
+maple	21
+bradford	21
+parma heights	20
+unionville	20
+chesterland	20
+waunakee	20
+paradise valley	20
+mount holly	19
+saint-hubert	19
+ambridge	19
+mcmurray	19
+caledon	19
+boucherville	19
+eastlake	19
+frazer	18
+saint-leonard	18
+maple heights	18
+woodmere	18
+mount horeb	18
+oakmont	17
+saint-jean-sur-richelieu	17
+garfield heights	17
+landsberg	17
+bellevue	17
+olivos	17
+wickliffe	17
+dallas	16
+saint-lambert	16
+tuscola	16
+bellagio	16
+monticello	15
+middlefield	15
+glenshaw	15
+north versailles	14
+white oak	14
+indian land	14
+anthem	14
+university heights	14
+north huntingdon	14
+olmsted falls	14
+east gwillimbury	13
+chestermere	13
+sun city west	13
+monongahela	13
+sainte-anne-de-bellevue	13
+chateauguay	13
+bay village	13
+san tan valley	13
+shaker heights	13
+oakdale	13
+bradford west gwillimbury	13
+richfield	12
+boisbriand	12
+lake wylie	12
+penn hills	12
+highland heights	12
+pleasant hills	12
+saint-eustache	12
+cottage grove	12
+warrensville heights	12
+savoy	12
+mont-royal	12
+stanley	11
+rosemere	11
+thale	11
+mc kees rocks	11
+stallings	11
+terrebonne	11
+de forest	11
+la prairie	11
+vanier	11
+tega cay	11
+elizabeth	11
+jork	11
+imperial	10
+sheffield village	10
+seven hills	10
+munhall	10
+sainte-julie	10
+king city	10
+angus	10
+lower burrell	10
+cheswick	9
+cramerton	9
+saint-jerome	9
+st martin	9
+deforest	9
+munroe falls	9
+youngtown	9
+clairton	9
+lich	9
+chambly	9
+cross plains	9
+valley view	9
+grünberg	9
+plum	9
+sun lakes	9
+springdale	8
+cecil	8
+blainville	8
+willoughby hills	8
+anjou	8
+mantua	8
+moss	8
+rocky view	8
+turtle creek	8
+brentwood	8
+grafton	8
+greenfield park	8
+copley	8
+mont-saint-hilaire	8
+sainte-adele	8
+robinson township	7
+saint-jérôme	7
+kirtland	7
+aspinwall	7
+burton	7
+mentor-on-the-lake	7
+beloeil	7
+fairview	7
+west homestead	7
+richmond heights	7
+finleyville	7
+mcfarland	7
+sainte-thérèse	7
+beaconsfield	7
+guadalupe	6
+harrison city	6
+schomberg	6
+montreal-nord	6
+newbury	6
+l'ile-perrot	6
+paradise	6
+saint-hyacinthe	6
+sankt martin	6
+hampton township	6
+rosemère	6
+moon	6
+mount lebanon	6
+mc farland	6
+n las vegas	6
+saint joseph	6
+bainbridge	6
+lowell	6
+fort mcdowell	6
+wesley chapel	5
+nobleton	5
+wilmerding	5
+mount albert	5
+brooklin	5
+north randall	5
+higley	5
+etna	5
+balzac	5
+rouses point	5
+rexdale	5
+glassport	5
+east cleveland	5
+lagrange	5
+sheffield lake	5
+saint-constant	5
+crafton	5
+south park	5
+midland	5
+mc murray	5
+mayfield village	5
+beeton	5
+landau	4
+mentor on the lake	4
+sainte-therese	4
+braddock	4
+saint-lazare	4
+l'île-perrot	4
+ahwatukee	4
+lam	4
+vimont	4
+lachute	4
+joliette	4
+kleinburg	4
+repentigny	4
+dravosburg	4
+windsor	4
+pointe-aux-trembles	4
+heidelberg	4
+dollard-des ormeaux	4
+bedford heights	4
+arnold	4
+spring valley	4
+saint-bruno-de-montarville	4
+west view	4
+caledon east	4
+argos	4
+houston	4
+castle shannon	4
+jefferson hills	4
+delson	4
+wilkinsburg	4
+mascouche	4
+salaberry-de-valleyfield	4
+leetsdale	4
+belleville	4
+moreland hills	4
+columbia station	4
+moon township	4
+swissvale	3
+peninsula	3
+st-jerome	3
+montreal-west	3
+millvale	3
+mc donald	3
+orange village	3
+mirabel	3
+nellis afb	3
+saint-bruno	3
+brookpark	3
+clark	3
+ogden	3
+laveen village	3
+sagamore hills	3
+new eagle	3
+upper saint clair	3
+sharpsburg	3
+ross township	3
+herminie	3
+black earth	3
+blawnox	3
+inden	3
+châteauguay	3
+forest hills	3
+skara	3
+litchfield	3
+oakwood	3
+la salle	3
+kahnawake	3
+emsworth	3
+rigaud	3
+upper st clair	2
+candiac	2
+sainte-marguerite-du-lac-masson	2
+bratenahl	2
+agincourt	2
+las  vegas	2
+king	2
+willowdale	2
+duquesne	2
+montreal-ouest	2
+baldwin	2
+mcadenville	2
+grand river	2
+gifford	2
+ormstown	2
+maria	2
+medina township	2
+library	2
+pheonix	2
+enterprise	2
+oakland	2
+clinton	2
+mayfield	2
+lawrenceville	2
+saint laurent	2
+russellton	2
+sturgeon	2
+east pittsburgh	2
+	2
+etobiicoke	2
+port credit	2
+cote saint-luc	2
+lowesville	2
+tigre	2
+la baie	2
+shaler township	2
+casablanca	2
+northwest calgary	2
+sheffield	2
+pepper pike	2
+morin-heights	2
+south las vegas	2
+freyburg	2
+homer	2
+north olmstead	2
+olmsted township	2
+paoli	2
+cuddy	2
+missisauga	2
+valley city	2
+farnham	2
+peters township	2
+cote-saint-luc	2
+avalon	2
+weddington	2
+carp	2
+champlain	2
+st oswald	2
+fairport harbor	2
+east mc keesport	2
+pincourt	2
+orange	2
+st-leonard	2
+bois-des-filion	2
+west elizabeth	2
+stoney creek	2
+jessen	2
+montrose	2
+lake park	2
+sainte-catherine	2
+st-bruno-de-montarville	2
+whtiby	2
+prévost	2
+tremont	2
+city bell	2
+main street	2
+mccandless township	2
+pitcairn	1
+laval, pont viau	1
+division no. 6	1
+fort  mill	1
+sainte-marguerite-esterel	1
+noyan	1
+lacolle	1
+lachenaie	1
+saint-alphonse	1
+train	1
+st joseph	1
+sainte-madeleine	1
+cuyahoga fls	1
+kinsman	1
+scottdale	1
+indianola	1
+saint-sauveur-des-monts	1
+pittsburg	1
+massey	1
+venetia	1
+north huntington	1
+south amherst	1
+venise-en-quebec	1
+brookline	1
+moon twp	1
+n ridgeville	1
+oakwood village	1
+concord township	1
+enns	1
+north  york	1
+st. léonard	1
+ferrel	1
+midnapore	1
+beauharnois	1
+central city village	1
+mt holly	1
+walton	1
+communauté-urbaine-de-montréal	1
+elizabeth township	1
+inglewood	1
+middleburg	1
+lasvegas	1
+thorncliffe park	1
+ben avon	1
+downtown	1
+glendale az	1
+villa rosa	1
+mansfield	1
+ville mont-royal	1
+thornhil	1
+caledon village	1
+mcdonald	1
+bedford hts.	1
+l'assomption	1
+vinci	1
+auburn township	1
+hermitage twp	1
+ste-therese-de-blainville	1
+dane	1
+nc	1
+sainte-geneviève	1
+chomedey, laval	1
+blakeney	1
+topaz	1
+l'ile-bizard	1
+fabreville	1
+mentor on the	1
+tolono	1
+blue diamond	1
+hendersonville	1
+rain	1
+mint  hill	1
+sainte-adèle	1
+mooers	1
+edgewood	1
+roxboro	1
+ranlo	1
+green tree	1
+saint-georges	1
+crescent	1
+scott township	1
+chatauguay	1
+richmond height	1
+baie-d'urfe	1
+east mckeesport	1
+ville-marie	1
+buena vista	1
+warrensville hts.	1
+richmond hts	1
+camargo	1
+creighton	1
+oakridges	1
+brunswick hills	1
+haus	1
+ridgeville	1
+mont-saint-gregoire	1
+neville island	1
+sainte-genevieve	1
+davidson, nc	1
+montéal	1
+morgan	1
+oka	1
+clarkson	1
+garfield hts	1
+summerlin	1
+saint-basile-le-grand	1
+bond head	1
+township of concord	1
+green valley	1
+rillton	1
+north braddock	1
+montréal-nord	1
+churubusco	1
+plum boro	1
+mccandless	1
+northfield center	1
+st-sauveur	1
+robinson twp.	1
+robinson	1
+ste-rose	1
+gates mills	1
+mt. oliver boro	1
+tornto	1
+lavaltrie	1
+saint-marc-sur-richelieu	1
+st leonard	1
+centre island	1
+river drive park	1
+oak ridges	1
+saint-charles-borromée	1
+rocky view no. 44	1
+st-clet	1
+saint-pierre-de-véronne-à-pike-river	1
+montréal-ouest	1
+central city	1
+south park township	1
+mount washington	1
+huntingdon	1
+queens square	1
+st-jean-sur-richelieu	1
+bainbridge township	1
+penn hills township	1
+mcmasterville	1
+bath	1
+hiram	1
+sainte-thérèse-de-blainville	1
+ange-gardien	1
+lower lawrenceville	1
+mesa az	1
+iberville	1
+l'île-bizard	1
+auburn twp	1
+varennes	1
+sainte-rose	1
+laval, ste dorothee	1
+l'île-perrôt	1
+ste-dorothée	1
+roosevelt	1
+maple grove	1
+concord twp	1
+linden	1
+bell	1
+goodwood	1
+cleveland hghts.	1
+southern	1
+edgewater	1
+godmanchester	1
+indian lands	1
+regent square	1
+harwick	1
+bellvue	1
+île-des-soeurs	1
+shadyside	1
+stowe	1
+northbrook	1
+n. las vegas	1
+hawthorne	1
+mt. lebanon	1
+scarobrough	1
+rawdon	1
+scarborough (c)	1
+st-laurent	1
+squirrel hill	1
+saint-henri	1
+regional municipality of york	1
+hinckley	1
+port vue	1
+north toronto	1
+baie-d'urfé	1
+east liberty	1
+nottingham	1
+v	1
+philo	1
+malton	1
+saint-roch-de-l'achigan	1
+sainte-marie	1
+sp	1
+hampstead	1
+liberty	1
+villa grove	1
+montréal de l'aube	1
+les coteaux	1
+ross	1
+northside	1
+don mills	1
+mercier	1
+harrisbug	1
+chertsey	1
+hemmingford	1
+summerlin south	1
+napierville	1
+harmarville	1
+charlemagne	1
+toronto scarborough	1
+canonsburd	1
+mattews	1
+mcknight	1
+richmond hil	1
+mont st-hilaire	1
+walton hills	1
+sainte-dorothée	1
+spring hill city view	1
+tottenham	1
+shorewood hills	1

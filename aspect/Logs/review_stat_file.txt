@@ -1,0 +1,4 @@
+Total number of reviews = 5996996
+Total number of reviews from non-restaurants = 3061090
+Total number of reviews from restaurants = 2935906
+Total number of reviews from las vegas restaurants = 850026

@@ -1,0 +1,8 @@
+Total number of businesses = 188593
+Total number of cities = 1062
+Total number of cities with restaurants = 700
+Total number of categories = 1305
+Total number of restaurants without pruning = 57191
+Total number of restaurants after pruning = 47394
+Total number of categories for non-restaurants = 671
+Total number of categories for restaurants = 225

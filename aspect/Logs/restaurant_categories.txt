@@ -1,0 +1,226 @@
+225 categories for restaurants restaurants.
+restaurants	47394
+food	8552
+fast food	6157
+sandwiches	5994
+pizza	5916
+american (traditional)	4526
+burgers	4378
+breakfast & brunch	4217
+chinese	4092
+italian	4080
+mexican	3921
+nightlife	3879
+bars	3784
+american (new)	3066
+coffee & tea	2735
+cafes	2484
+japanese	2450
+sushi bars	2030
+seafood	1963
+salad	1944
+chicken wings	1713
+asian fusion	1605
+mediterranean	1561
+canadian (new)	1381
+delis	1372
+thai	1348
+barbeque	1338
+steakhouses	1272
+diners	1244
+vietnamese	1194
+desserts	1150
+bakeries	1124
+middle eastern	1030
+indian	969
+greek	962
+french	851
+vegetarian	819
+korean	777
+specialty food	776
+ice cream & frozen yogurt	771
+buffets	762
+wine bars	722
+soup	698
+tex-mex	636
+gluten-free	627
+hot dogs	619
+juice bars & smoothies	618
+vegan	598
+cocktail bars	579
+comfort food	526
+lounges	526
+ethnic food	492
+food delivery services	462
+beer	445
+wine & spirits	445
+latin american	414
+halal	402
+noodles	395
+southern	381
+bagels	370
+tapas/small plates	296
+food trucks	287
+fish & chips	273
+dim sum	273
+soul food	237
+tapas bars	231
+imported food	228
+creperies	225
+cajun/creole	220
+lebanese	205
+ramen	202
+hawaiian	200
+portuguese	197
+donuts	195
+taiwanese	193
+cheesesteaks	189
+filipino	188
+modern european	172
+tacos	169
+persian/iranian	158
+poutineries	153
+tea rooms	151
+bubble tea	150
+beer bar	143
+food court	126
+turkish	123
+falafel	119
+hot pot	110
+german	108
+local flavor	107
+bistros	106
+african	102
+hookah bars	102
+afghan	100
+kosher	96
+peruvian	89
+waffles	89
+wraps	87
+szechuan	84
+cantonese	83
+brasseries	80
+breweries	79
+karaoke	76
+ethiopian	72
+pan asian	72
+malaysian	71
+brazilian	69
+moroccan	64
+coffee roasteries	63
+internet cafes	61
+cuban	60
+polish	60
+arabian	59
+salvadoran	57
+british	55
+donairs	55
+do-it-yourself food	51
+kebab	50
+mongolian	48
+himalayan/nepalese	48
+delicatessen	45
+live/raw food	45
+russian	44
+argentine	43
+fondue	41
+new mexican cuisine	41
+gelato	39
+belgian	37
+international	36
+shaved ice	36
+acai bowls	36
+colombian	36
+irish	35
+smokehouse	35
+cambodian	35
+cafeteria	34
+cupcakes	31
+hakka	30
+hungarian	29
+sri lankan	28
+pretzels	27
+teppanyaki	27
+indonesian	25
+custom cakes	25
+butcher	24
+singaporean	24
+fruits & veggies	21
+venezuelan	20
+egyptian	19
+ukrainian	17
+active life	17
+gay bars	14
+laotian	14
+izakaya	13
+south african	13
+local services	12
+bangladeshi	11
+speakeasies	11
+burmese	11
+empanadas	10
+shanghainese	10
+scandinavian	8
+bowling	8
+austrian	7
+australian	7
+syrian	7
+couriers & delivery services	6
+tiki bars	6
+palatine	5
+iberian	5
+czech	5
+piano bars	5
+champagne bars	5
+armenian	4
+themed cafes	4
+bavarian	4
+sugar shacks	4
+home services	3
+tuscan	3
+honduran	3
+uzbek	3
+conveyor belt sushi	3
+slovakian	3
+pop-up restaurants	3
+japanese curry	3
+dinner theater	3
+mauritius	2
+swiss food	2
+sicilian	2
+distilleries	2
+northern german	2
+beaches	2
+basque	2
+pita	2
+eastern european	1
+milkshake bars	1
+home cleaning	1
+baguettes	1
+mountain biking	1
+bulgarian	1
+hainan	1
+cigar bars	1
+senegalese	1
+signature cuisine	1
+kombucha	1
+csa	1
+kids activities	1
+funeral services & cemeteries	1
+plumbing	1
+czech/slovakian	1
+professional services	1
+minho	1
+cideries	1
+tonkatsu	1
+tempura	1
+aquariums	1
+handyman	1
+churros	1
+batting cages	1
+udon	1
+drive-thru bars	1
+hong kong style cafe	1
+bar crawl	1
+serbo croatian	1
+chilean	1
