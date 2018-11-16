@@ -4,9 +4,9 @@ from aspects import *
 def main():
     # CHANGE THE PATHS HERE
     # absolute path of yelp_academic_dataset_business.json
-    business_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_business.json'
+    business_file = '../../../yelp_academic_dataset_business.json'
     # absolute path of yelp_academic_dataset_review.json
-    review_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_review.json'
+    review_file = '../../../yelp_academic_dataset_review.json'
 
     # path of file storing all the restaurant businesses
     restaurant_file = '../Data/restaurants.json'
