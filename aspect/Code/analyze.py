@@ -115,6 +115,17 @@ def analyze_business(business_file, stop_category_file, business_stat_file):
         for cat, count in c.most_common():
             fout.write('{}\t{}\n'.format(cat, count))
 
+def read_test_annotations():
+	filename = '../../retrieval/test_data.json'
+	test_reviews = {}
+	with open(filename, 'r') as f:
+		for line in f:
+			test_review = json.loads(line)
+			if test_review['aspects'] != "" and test_review['query'] != "":
+				test_reviews[test_review['review_id']] = test_review
+	print(len(test_reviews))
+	return test_reviews
+
 def analyze_reviews(review_file, review_stat_file):
     restaurants = set()   
     with open('../Logs/restaurants.txt', 'r') as fin:
@@ -196,39 +207,17 @@ def analyze_reviews(review_file, review_stat_file):
             num_words = len(text.split())
             train_word_vs_review[num_words] += 1
 
+    
+
+    test_reviews = set(read_test_annotations().keys())
     test_word_vs_review = defaultdict(int)
     with open('../Data/negative_test_reviews.json', 'r') as fin:
         for line in fin:
             review = json.loads(line)
-            text = review['text']
-            num_words = len(text.split())
-            test_word_vs_review[num_words] += 1
-
-    plt.clf()
-    fig, axes = plt.subplots(2, 1, sharex=True, sharey=False)
-    axes[0].bar(train_word_vs_review.keys(), train_word_vs_review.values())    
-    axes[1].bar(test_word_vs_review.keys(), test_word_vs_review.values())    
-
-    fig.xlabel('number of words')
-    fig.ylabel('number of reviews')
-    fig.tight_layout()
-    fig.savefig('../Logs/train_test_num_words_vs_num_reviews.jpeg')
-
-    train_word_vs_review = defaultdict(int)
-    with open('../Data/filtered_dataset.json', 'r') as fin:
-        for line in fin:
-            review = json.loads(line)
-            text = review['text']
-            num_words = len(text.split())
-            train_word_vs_review[num_words] += 1
-
-    test_word_vs_review = defaultdict(int)
-    with open('../Data/negative_test_reviews.json', 'r') as fin:
-        for line in fin:
-            review = json.loads(line)
-            text = review['text']
-            num_words = len(text.split())
-            test_word_vs_review[num_words] += 1
+            if review['review_id'] in test_reviews:
+                text = review['text']
+                num_words = len(text.split())
+                test_word_vs_review[num_words] += 1
 
     plt.clf()
     fig, axes = plt.subplots(2, 1, sharex=False, sharey=False)
@@ -243,15 +232,48 @@ def analyze_reviews(review_file, review_stat_file):
     # plt.ylabel('number of reviews')
     plt.tight_layout()
     fig.savefig('../Logs/train_test_num_words_vs_num_reviews.jpeg')
+    
 
 
 if __name__ == '__main__':
-    business_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_business.json'
-    review_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_review.json'
-    stop_file = '../Data/stop_list.txt'
-    business_stat_file = '../Logs/business_stat_file.txt'
-    review_stat_file = '../Logs/review_stat_file.txt'
-    # analyze_business(business_file, stop_file, business_stat_file)
-    analyze_reviews(review_file, review_stat_file)
+    # business_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_business.json'
+    # review_file = '/home/rohan/Documents/yelp_dataset/yelp_academic_dataset_review.json'
+    # stop_file = '../Data/stop_list.txt'
+    # business_stat_file = '../Logs/business_stat_file.txt'
+    # review_stat_file = '../Logs/review_stat_file.txt'
+    # # analyze_business(business_file, stop_file, business_stat_file)
+    # analyze_reviews(review_file, review_stat_file)
+    train_word_vs_review = defaultdict(int)
+    with open('../Data/filtered_dataset.json', 'r') as fin:
+        for line in fin:
+            review = json.loads(line)
+            text = review['text']
+            num_words = len(text.split())
+            train_word_vs_review[num_words] += 1
 
+    
+
+    test_reviews = set(read_test_annotations().keys())
+    test_word_vs_review = defaultdict(int)
+    with open('../Data/negative_test_reviews.json', 'r') as fin:
+        for line in fin:
+            review = json.loads(line)
+            if review['review_id'] in test_reviews:
+                text = review['text']
+                num_words = len(text.split())
+                test_word_vs_review[num_words] += 1
+
+    plt.clf()
+    fig, axes = plt.subplots(2, 1, sharex=False, sharey=False)
+    axes[0].bar(train_word_vs_review.keys(), train_word_vs_review.values())
+    axes[0].set_ylabel('number of train reviews')
+    axes[0].set_xlabel('number of words in a review')    
+    axes[1].bar(test_word_vs_review.keys(), test_word_vs_review.values())    
+    axes[1].set_ylabel('number of test reviews')
+    axes[1].set_xlabel('number of words in a review')    
+
+    # plt.xlabel('number of words')
+    # plt.ylabel('number of reviews')
+    plt.tight_layout()
+    fig.savefig('../Logs/train_test_num_words_vs_num_reviews.jpeg')
     
