@@ -66,10 +66,11 @@ def get_dependencies(review_file, dependency_file):
                     review['review_id'], str(e)))
 
 
-# incomplete
+# extracts aspects using dependency parser
 def get_aspects(dependency_file, aspect_file):
     count = 0
-    with open(dependency_file,'r') as fin, open(aspect_file, 'w') as fout, open('../Data/advmod.txt', 'w') as adv, open('../Data/cmpd.txt', 'w') as cmpd, open('../Data/dobj.txt', 'w') as dobj, open('../Data/amod.txt', 'w') as amod:
+    with open(dependency_file,'r') as fin, open(aspect_file, 'w') as fout:
+    # , open('../Data/advmod.txt', 'w') as adv, open('../Data/cmpd.txt', 'w') as cmpd, open('../Data/dobj.txt', 'w') as dobj, open('../Data/amod.txt', 'w') as amod:
         for line in fin:
             print('Review {}'.format(str(count + 1)), end='\r')
             index = line.find(':')
@@ -81,36 +82,36 @@ def get_aspects(dependency_file, aspect_file):
 
                 for dependency in sentence_dependencies[0]:
                     # print(dependency)
-                    # if dependency[1] == 'nsubj' and dependency[0][1].startswith('JJ') and dependency[2][1].startswith('NN'):
+                    if dependency[1] == 'nsubj' and dependency[0][1].startswith('JJ') and dependency[2][1].startswith('NN'):
                     # if (dependency[0][1].startswith('JJ') and dependency[2][1].startswith('NN')) or (dependency[0][1].startswith('NN') and dependency[2][1].startswith('JJ')):
-                    if (dependency[1] == 'nsubj' and
-                        ((dependency[0][1].startswith('JJ')
-                          and dependency[2][1].startswith('NN')) or
-                         (dependency[0][1].startswith('NN')
-                          and dependency[2][1].startswith('JJ')))) or (
-                              dependency[1] == 'dobj' and
-                               ((dependency[0][1].startswith('NN')
-                                or dependency[0][1].startswith('VBN'))
-                               and dependency[2][1].startswith('NN'))) or (
-                              dependency[1] == 'advmod' and
-                               (dependency[0][1].startswith('JJ')
-                                or dependency[0][1].startswith('VBN'))
-                               and dependency[2][1].startswith('RB')) or (
-                              dependency[1] == 'compound'
-                               and dependency[0][1].startswith('NN')
-                               and dependency[2][1].startswith('NN')) or (
-                              dependency[1] == 'amod'
-                               and dependency[0][1].startswith('NN')
-                               and dependency[2][1].startswith('JJ')):
+                    # if (dependency[1] == 'nsubj' and
+                    #     ((dependency[0][1].startswith('JJ')
+                    #       and dependency[2][1].startswith('NN')) or
+                    #      (dependency[0][1].startswith('NN')
+                    #       and dependency[2][1].startswith('JJ')))) or (
+                    #           dependency[1] == 'dobj' and
+                    #            ((dependency[0][1].startswith('NN')
+                    #             or dependency[0][1].startswith('VBN'))
+                    #            and dependency[2][1].startswith('NN'))) or (
+                    #           dependency[1] == 'advmod' and
+                    #            (dependency[0][1].startswith('JJ')
+                    #             or dependency[0][1].startswith('VBN'))
+                    #            and dependency[2][1].startswith('RB')) or (
+                    #           dependency[1] == 'compound'
+                    #            and dependency[0][1].startswith('NN')
+                    #            and dependency[2][1].startswith('NN')) or (
+                    #           dependency[1] == 'amod'
+                    #            and dependency[0][1].startswith('NN')
+                    #            and dependency[2][1].startswith('JJ')):
                         aspects.append(dependency)
-                        if dependency[1] == 'dobj':
-                            dobj.write(str(dependency) + '\n')
-                        if dependency[1] == 'advmod':
-                            adv.write(str(dependency) + '\n')
-                        if dependency[1] == 'compound':
-                            cmpd.write(str(dependency) + '\n')
-                        if dependency[1] == 'amod':
-                            amod.write(str(dependency) + '\n')
+                        # if dependency[1] == 'dobj':
+                        #     dobj.write(str(dependency) + '\n')
+                        # if dependency[1] == 'advmod':
+                        #     adv.write(str(dependency) + '\n')
+                        # if dependency[1] == 'compound':
+                        #     cmpd.write(str(dependency) + '\n')
+                        # if dependency[1] == 'amod':
+                        #     amod.write(str(dependency) + '\n')
             fout.write(review_id + str(aspects) + '\n')
             count += 1
 
@@ -142,7 +143,7 @@ if __name__ == '__main__':
     aspect_file = '../Data/aspects.txt'
     combined_dependency_file = '../Data/combined_dependencies.txt'
 
-    combine_dependencies(dependency_file, combined_dependency_file)
+    # combine_dependencies(dependency_file, combined_dependency_file)
 # Runs dependency parser on train set to extract dependencies
     # retcode = start_corenlp_server()
     # if retcode != 0:

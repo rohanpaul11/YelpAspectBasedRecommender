@@ -6,3 +6,5 @@ aspect/Logs/corenlp.log
 aspect/Code/__pycache__
 retrieval/index
 retrieval/trecText
+aspect/Data/Saved Models/*
+aspect/Data/*model*
