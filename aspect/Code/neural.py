@@ -5,6 +5,7 @@ from torch import nn
 import time
 from gensim.models import Word2Vec
 import re
+from sklearn.cluster import KMeans
 
 class NeuralAspect(nn.Module):
     def __init__(self, d_word, num_aspect_types, len_voc, device):
@@ -29,50 +30,67 @@ class NeuralAspect(nn.Module):
 
     # perform forward propagation of NeuralAspect model
     # element may be a sentence or a review
-    def forward(self, element):
+    def forward(self, elements):
 
-        num_words = len(element)
+        bsz, num_words, _ = elements.size()
+        # num_words = len(element)
 
         # get embeddings of inputs
         # embs = self.word_embs(element)
         # print(embs.size())
 
-        y = torch.mean(element, 0)
-
+        y = torch.mean(elements, 1)
+        # print('y=',y.size())
+        # y = torch.mean(element, 0)
         # get the weights for each word
-        d = torch.zeros(num_words, device=self.device)
-        for i, word in enumerate(element):
-            # t = torch.matmul(torch.transpose(word, 0, 1), M)            
-            t = self.M(word)
-            # print(t.size(), y.size())
-            d[i] = torch.matmul(t, y)
-        a = torch.nn.functional.log_softmax(d, dim=0)
         
-        # encode the input element        
-        z = torch.matmul(torch.transpose(element,0,1), a)
+        # for i, word in enumerate(element):
+        #     # t = torch.matmul(torch.transpose(word, 0, 1), M)            
+        #     t = self.M(word)
+        #     # print(t.size(), y.size())
+        #     d[i] = torch.matmul(t, y)
+        # a = nn.functional.softmax(d, dim=0)
+        
+        t = self.M(elements)
+        # print('t=',t.size())
+        d = torch.bmm(t, y.unsqueeze(-1))
+        # print('d=',d.size())
+        a = nn.functional.softmax(d, dim=1)
+        # print(a)
+        # print('a=',a.size())
+        z = torch.bmm(a.transpose(1,2), elements)
+        # print('z=',z.size())
+        p = nn.functional.softmax(self.W(z), 0)        
+        # print(p)
+        # print('p=',p.size())
+        # # encode the input element        
+        # z = torch.matmul(torch.transpose(element,0,1), a)
 
         # prob vector over aspects
-        p = torch.nn.functional.softmax(self.W(z), 0)
+        # p = torch.nn.functional.softmax(self.W(z), 0)
         
         #reconstructed sentence vector
-        r = self.T(p)        
+        r = self.T(p)
+        # print(r.size())        
         
         return (z,r)
 
     # loss function
-    def compute_loss(self, Z, R, neg_reviews, _lambda = 0.001):
+    def compute_loss(self, Z, R, neg_reviews, _lambda = 1):
 
         J = 0
         for i in range(len(Z)):
             N = 0
             for neg_review in neg_reviews:
-                N += torch.matmul(R[i], torch.mean(neg_review, 0))
-            J += max(0, 1 - torch.matmul(R[i], Z[i]) + N)
+                N += torch.dot(R[i].view(-1), torch.mean(neg_review, 0).view(-1))
+            J += max(0, 1 - torch.dot(R[i].view(-1), Z[i].view(-1)) + N)
 
         T_ = self.T.weight
         Tnorm = torch.nn.functional.normalize(T_, dim=1) #p=2 by default
+        # print(Tnorm)
         U = torch.matmul(Tnorm, torch.transpose(Tnorm, 0, 1)) - torch.eye(Tnorm.size()[0], device=self.device)
 
+        # print('J=',J, 'Tnorm=', Tnorm)
         loss = J + _lambda * U.norm()
         return loss
 

@@ -8,3 +8,4 @@ retrieval/index
 retrieval/trecText
 aspect/Data/Saved Models/*
 aspect/Data/*model*
+aspect/saved_models/
